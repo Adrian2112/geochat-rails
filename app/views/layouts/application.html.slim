@@ -9,13 +9,14 @@ html
   
   body
     .container
-      #header.unit.on-2.columns
-        .column.logo
+      #header
+        span.logo
           h1: a(href="/") Geochat
-        .column.menu
+        span.menu
           - if !current_user
             a(href="/auth/foursquare") Login
           - else
+            span.username= current_user
             = link_to 'Logout', logout_path
       
       = yield
