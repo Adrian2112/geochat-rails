@@ -7,8 +7,10 @@ class User
   key :foursquare_id, Integer
   key :email, String
   key :token, String
-
   timestamps!
+
+  many :messages
+
 
   def to_s
     self.name

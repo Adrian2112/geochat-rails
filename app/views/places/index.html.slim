@@ -8,7 +8,7 @@ ul#places_list
 script#places_tmpl(type="text/x-handlebars-template")
   | {{#each places}}
   li
-    a.4sqr_place(data-id="{{id}}" href="/places/{{id}}/{{name}}") {{name}}
+    a.4sqr_place(data-id="{{id}}" href="/places/{{id}}?name={{name}}") {{name}}
   |{{/each}}
 
   |{{#unless places}}
