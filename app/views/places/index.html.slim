@@ -1,0 +1,17 @@
+form#place_query(href="#")
+  | selecciona un lugar: 
+  input.query
+
+ul#places_list
+  img(src="/assets/spinner.gif")
+
+script#places_tmpl(type="text/x-handlebars-template")
+  | {{#each places}}
+  li
+    a.4sqr_place(data-id="{{id}}" href="/places/{{id}}/{{name}}") {{name}}
+  |{{/each}}
+
+  |{{#unless places}}
+  p No se encontraron lugares con este nombre
+  |{{/unless}}
+
