@@ -10,6 +10,10 @@ class User
 
   timestamps!
 
+  def to_s
+    self.name
+  end
+
   def self.from_omniauth(auth)
     where(foursquare_id: auth.uid.to_i).first || create_from_omniauth(auth)    
   end
