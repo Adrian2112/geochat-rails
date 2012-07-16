@@ -1,0 +1,5 @@
+p.message
+  img(src='#{message.user.photo}')
+  span.author #{message.user}:
+  span.text #{message.text}
+  abbr.timeago(title="#{message.created_at.iso8601}") #{l message.created_at, format: :long}
