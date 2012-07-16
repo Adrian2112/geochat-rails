@@ -1,5 +1,5 @@
 .message
-  - if current_user.mayorships.include? message.place_id
+  - if message.user.mayorships.include? message.place_id
     img.mayor(src="http://foursquare.com/img/icon-crown-rotated.png")
   - else
     span.mayor-placeholder
