@@ -11,12 +11,12 @@ gem 'omniauth-foursquare'
 gem "json"
 gem "typhoeus"
 gem "quimby"
+gem 'slim'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'slim'
   gem 'stylus'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
