@@ -5,7 +5,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'http://wilbur.io.s3.amazonaws.com/all.css'
     = javascript_include_tag 'application'
-    = javascript_include_tag 'http://localhost:5000/faye.js'
+    = javascript_include_tag FAYE_SERVER+".js"
     = csrf_meta_tags
   
   body
