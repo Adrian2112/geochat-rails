@@ -11,7 +11,8 @@ class User
   timestamps!
 
   many :messages
-
+  
+  PUBLIC = [:name, :gender, :photo]
 
   def to_s
     self.name
@@ -44,6 +45,10 @@ class User
     self.photo = env['extra']["raw_info"]["photo"]
 
     self.save
+  end
+
+  def public_attributes
+    self.attributes.reject {|k, v| !PUBLIC.include? k.to_sym}
   end
 
 end
