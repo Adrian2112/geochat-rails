@@ -54,6 +54,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.1)
       multipart-post (~> 1.1)
+    ffi (1.0.11)
     hashie (1.2.0)
     hike (1.2.1)
     httpauth (0.1)
@@ -96,6 +97,9 @@ GEM
     plucky (0.4.4)
       mongo (~> 1.5)
     polyglot (0.3.3)
+    quimby (0.4.5)
+      json
+      typhoeus
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -146,6 +150,9 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.4.2)
+      ffi (~> 1.0)
+      mime-types (~> 1.18)
     tzinfo (0.3.33)
     uglifier (1.2.6)
       execjs (>= 0.3.0)
@@ -159,10 +166,13 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   jquery-rails
+  json
   mongo_mapper
   omniauth-foursquare
+  quimby
   rails (= 3.2.1)
   rspec
   slim
   stylus
+  typhoeus
   uglifier (>= 1.0.3)

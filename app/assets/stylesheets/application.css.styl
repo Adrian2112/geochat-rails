@@ -30,11 +30,11 @@ div#messages
   border: solid 1px #E6E6E6
   border-radius: 10px
   padding: 10px
-  max-height: 300px
+  height: 300px
   overflow: auto
 
-  p.message
-    height: 35px
+  .message
+    min-height: 35px
     margin: 0
     padding: 10px 0 0 0
 
@@ -42,13 +42,24 @@ div#messages
       background: none repeat scroll 0 0 #F8F8F8
       border-radius: 10px
 
-    img
+    img.photo
       float: left
       width: 30px
       border-radius: 5px
 
+    img.mayor
+      height: 17px
+      left: -40px
+      position: relative
+      top: -9px
+      width: 18px
+
+    span.mayor-placeholder
+      padding: 0 18px 0 0
+
     span.author
-      margin: 0 15px
+      margin: 0 0 0 -10px
+      padding: 0 10px 0 0
       font-weight: bold
 
     abbr.timeago

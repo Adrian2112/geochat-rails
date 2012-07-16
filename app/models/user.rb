@@ -7,6 +7,7 @@ class User
   key :foursquare_id, Integer
   key :email, String
   key :token, String
+  key :mayorships, Array
   timestamps!
 
   many :messages
@@ -30,6 +31,14 @@ class User
     user.token = auth['credentials']['token']
     user.save
     user
+  end
+
+  def update_mayorships(env)
+    venues = env["extra"]["raw_info"]["mayorships"]["items"]
+    self.mayorships = venues.map do |i|
+      i["id"]
+    end
+    self.save
   end
 
 end
