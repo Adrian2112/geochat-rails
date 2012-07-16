@@ -6,6 +6,8 @@ GeochatRails::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   
   FAYE_SERVER = "http://localhost:5000/faye"
+  FOURSQUARE_CLIENT_ID = "clientId"
+  FOURSQUARE_CLIENT_SECRET = "clientSecret"
 
   config.cache_classes = false
 
