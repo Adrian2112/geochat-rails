@@ -65,13 +65,17 @@ refresh_places = (places) ->
 append_message = (message) ->
   html = Handlebars.compile($("#place_tmpl").html())
   $("#messages").append(html(message))
-  scroll_to_bottom("#messages")
+  scroll_to_bottom()
 
-@scroll_to_bottom = (div_id) ->
-  $(div_id).scrollTop($(div_id)[0]?.scrollHeight)
+@scroll_to_bottom = () ->
+  $("#messages").scrollTop($("#messages")[0]?.scrollHeight)
+
+@announce_user = (user) ->
+  $("#messages").append("<div>"+JSON.stringify(user)+"</div>")
+  scroll_to_bottom()
 
 jQuery ->
-  scroll_to_bottom("#messages")
+  scroll_to_bottom()
   $("#new_message input.text").focus()
 
   if $("#places_list").length != 0

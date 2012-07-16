@@ -1,0 +1,15 @@
+$(document).ready(function(){
+  faye = new Faye.Client('<%= FAYE_SERVER %>')
+  //
+  faye.subscribe("<%= channel %>", function(message){
+    eval(message)
+    scroll_to_bottom()
+  });
+
+  faye.publish("<%= channel%>/users", <%= current_user.public_attributes.to_json %>)
+
+  //
+  faye.subscribe("<%= channel %>/users", function(message){
+    announce_user(message);
+  })
+})
