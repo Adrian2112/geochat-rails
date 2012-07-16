@@ -78,6 +78,7 @@ jQuery ->
     navigator.geolocation.getCurrentPosition(success, error)
 
   #server = io.connect('/')
+  faye = new Faye.Client('http://localhost:5000/faye')
 
   $("form#place_query input.query").observe_field 0.5, ->
     places = geochat.places || []
@@ -96,25 +97,21 @@ jQuery ->
      foursquare_api({query: $(this).children(".query").val()})
      return false
    
-   # 
-   # Show place
-   #
-   $("form#new_message").submit ->
-     text_input = $(this).children(".text")
-     place_id_input = $(this).children(".place_id")
-     
-     message = {text: text_input.val(), place_id: place_id_input.val() }
-     #server.emit("post_message", message)
-     text_input.val("")
-     message.author = "Me"
-     message.date = (new Date).toISOString()
-     message.dateString = moment(message.date).format("LLLL")
-     append_message(message)
-     return false
+   $("form#new_message").submit (e) ->
+     $.ajax {
+       url: $(this).data("action")
+       data: $(this).serialize()
+       type: "POST"
+     }
 
-    $("abbr.timeago").livequery ->
-      $(this).timeago()
+     $(this).children(".text").val("")
+     e.preventDefault()
 
-    #server.on "new_message", (message) ->
-    #  append_message(message)
+  $("abbr.timeago").livequery ->
+    $(this).timeago()
+
+  faye.subscribe "/messages/new", (message) ->
+    eval(message)
+    scroll_to_bottom("#messages")
+      
 

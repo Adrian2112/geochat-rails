@@ -1,12 +1,14 @@
 h3 #{@name}
 div#messages
   - @messages.each do |message|
-    p.message
-      span.author #{message.user}:
-      span.text #{message.text}
-      /abbr.timeago(title="#{message.date.toISOString()}") #{message.dateString()}
+    = render message
 
-form#new_message
-  input.text
-  input.place_id(type="hidden" value="#{@place}")
+= form_for Message.new, {url: '#', html: {"data-action" => place_messages_path(params[:id])}} do |f| 
+  =f.text_field :text, class: :text
+
+script#place_tmpl(type="text/x-handlebars-template")
+  p.message
+    span.author {{user}}:
+    span.text {{text}}
+    abbr.timeago(title="{{date}}") {{dateString}}
 
