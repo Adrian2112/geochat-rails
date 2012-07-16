@@ -67,7 +67,7 @@ append_message = (message) ->
   $("#messages").append(html(message))
   scroll_to_bottom("#messages")
 
-scroll_to_bottom = (div_id) ->
+@scroll_to_bottom = (div_id) ->
   $(div_id).scrollTop($(div_id)[0]?.scrollHeight)
 
 jQuery ->
@@ -76,9 +76,6 @@ jQuery ->
 
   if $("#places_list").length != 0
     navigator.geolocation.getCurrentPosition(success, error)
-
-  #server = io.connect('/')
-  faye = new Faye.Client('http://localhost:5000/faye')
 
   $("form#place_query input.query").observe_field 0.5, ->
     places = geochat.places || []
@@ -109,9 +106,3 @@ jQuery ->
 
   $("abbr.timeago").livequery ->
     $(this).timeago()
-
-  faye.subscribe "/messages/new", (message) ->
-    eval(message)
-    scroll_to_bottom("#messages")
-      
-
