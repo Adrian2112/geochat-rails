@@ -12,3 +12,5 @@ script#place_tmpl(type="text/x-handlebars-template")
     span.text {{text}}
     abbr.timeago(title="{{date}}") {{dateString}}
 
+script
+  = suscribe place_messages_path(params[:id])
