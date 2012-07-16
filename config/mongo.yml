@@ -1,16 +1,10 @@
-defaults: &defaults
+development:
   host: 127.0.0.1
   port: 27017
-
-development:
-  <<: *defaults
   database: geochat
-
-test:
-  <<: *defaults
-  database: geochat_rails_test
 
 # set these environment variables on your prod server
 production:
-  <<: *defaults
+  host: 127.0.0.1
+  port: 27017
   database: geochat
