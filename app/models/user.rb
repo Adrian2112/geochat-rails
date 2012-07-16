@@ -33,11 +33,16 @@ class User
     user
   end
 
-  def update_mayorships(env)
+  def update_info(env)
+    # update mayorships
     venues = env["extra"]["raw_info"]["mayorships"]["items"]
     self.mayorships = venues.map do |i|
       i["id"]
     end
+
+    #update photo
+    self.photo = env['extra']["raw_info"]["photo"]
+
     self.save
   end
 
