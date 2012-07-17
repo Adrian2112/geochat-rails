@@ -71,7 +71,8 @@ append_message = (message) ->
   $("#messages").scrollTop($("#messages")[0]?.scrollHeight)
 
 @announce_user = (user) ->
-  $("#messages").append("<div>"+JSON.stringify(user)+"</div>")
+  html = Handlebars.compile($("#new_user_tmpl").html())
+  $("#messages").append(html(user))
   scroll_to_bottom()
 
 jQuery ->

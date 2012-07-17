@@ -12,5 +12,10 @@ script#place_tmpl(type="text/x-handlebars-template")
     span.text {{text}}
     abbr.timeago(title="{{date}}") {{dateString}}
 
+script#new_user_tmpl(type="text/x-handlebars-template")
+  .new_user
+    span.name {{name}} se ha unido
+    span.timeago(title="{{date}}")
+
 script
   = suscribe place_messages_path(params[:id])
