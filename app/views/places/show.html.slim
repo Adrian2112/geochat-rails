@@ -6,19 +6,13 @@ div#messages
   - @messages.each do |message|
     = render message
 
-= form_for Message.new, {url: '#', html: {"data-action" => place_messages_path(params[:id])}} do |f| 
+= form_for Message.new, {url: '#'} do |f| 
   =f.text_field :text, class: :text
 
-script#place_tmpl(type="text/x-handlebars-template")
-  p.message
-    span.author {{user}}:
-    span.text {{text}}
-    abbr.timeago(title="{{date}}") {{dateString}}
+
+= template_include_tag '/messages/message'
 
 script#new_user_tmpl(type="text/x-handlebars-template")
   .new_user
-    span.name {{name}} se ha unido
+    span.name {{name}} has joined
     span.timeago(title="{{date}}")
-
-script
-  = suscribe place_messages_path(params[:id])

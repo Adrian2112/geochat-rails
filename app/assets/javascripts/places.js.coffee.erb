@@ -1,0 +1,50 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+scroll_to_bottom = () ->
+  $("#messages").scrollTop($("#messages")[0]?.scrollHeight)
+
+announce_user = (user) ->
+  html = Handlebars.compile($("#new_user_tmpl").html())
+  $("#messages").append(html(user))
+  scroll_to_bottom()
+
+append_message = (message) ->
+  html = Handlebars.compile($("#messages-message-template").html())
+  $("#messages").append(html({message: message}))
+  scroll_to_bottom()
+
+
+jQuery ->
+  scroll_to_bottom()
+
+  $("#new_message input.text").focus()
+  message.user = user
+  
+  $("abbr.timeago").livequery ->
+    $(this).timeago()
+
+  place_id = $("[data-place=true]")?.data("place")
+  user = $("[data-user]").data("user")
+
+  $("form#new_message").submit (e) ->
+    message = { text: $("#new_message input.text").val() }
+    socket.emit("new message", message)
+    $(this).children(".text").val("")
+
+    message.created_at = created_at: (new Date).toISOString()
+    message.user = user
+    append_message message
+    e.preventDefault()
+
+  if place_id
+    socket = io.connect('<%= SOCKETIO_SERVER %>')
+    socket.emit("join room", {room: place_id, user: user} )
+
+    socket.on "new user", (user) ->
+      announce_user user
+
+    socket.on "new message", (message) ->
+      append_message message
+

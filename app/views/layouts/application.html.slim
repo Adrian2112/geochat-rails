@@ -18,6 +18,7 @@ html
             a(href="/auth/foursquare") Login
           - else
             span.username= current_user
+            span(data-user="#{current_user.public_attributes.to_json}")
             = link_to 'Logout', logout_path
       
       = yield

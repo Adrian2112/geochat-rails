@@ -13,6 +13,8 @@ gem "typhoeus"
 gem "quimby"
 gem 'slim'
 
+gem 'mustache'
+gem 'poirot', '0.0.3'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

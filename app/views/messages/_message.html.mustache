@@ -1,0 +1,13 @@
+<div class="message">
+  {{#mayor}}
+    <img src="http://foursquare.com/img/icon-crown-rotated.png">
+  {{/mayor}}
+
+  {{^mayor}}
+    <span class="mayor-placeholder"></span>
+  {{/mayor}}
+  <img src='{{message.user.photo}}' class="photo" />
+  <span class="author">{{message.user.name}}</span>
+  <span class="text">{{ message.text }}</span>
+  <abbr class="timeago" title="{{message.created_at}}">{{message.created_at}}</abbr>
+</div>

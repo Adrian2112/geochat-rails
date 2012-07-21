@@ -13,6 +13,7 @@
 ##= require jquery
 ##= require jquery_ujs
 ##= require vendor
+##= require poirot
 ##= require_tree .
 
 window.geochat = {}
@@ -61,24 +62,7 @@ refresh_places = (places) ->
   html = Handlebars.compile($("#places_tmpl").html())
   $("#places_list").html(html({places: places}))
 
-
-append_message = (message) ->
-  html = Handlebars.compile($("#place_tmpl").html())
-  $("#messages").append(html(message))
-  scroll_to_bottom()
-
-@scroll_to_bottom = () ->
-  $("#messages").scrollTop($("#messages")[0]?.scrollHeight)
-
-@announce_user = (user) ->
-  html = Handlebars.compile($("#new_user_tmpl").html())
-  $("#messages").append(html(user))
-  scroll_to_bottom()
-
 jQuery ->
-  scroll_to_bottom()
-  $("#new_message input.text").focus()
-
   if $("#places_list").length != 0
     navigator.geolocation.getCurrentPosition(success, error)
 
@@ -98,16 +82,3 @@ jQuery ->
    $("form#place_query").submit ->
      foursquare_api({query: $(this).children(".query").val()})
      return false
-   
-   $("form#new_message").submit (e) ->
-     $.ajax {
-       url: $(this).data("action")
-       data: $(this).serialize()
-       type: "POST"
-     }
-
-     $(this).children(".text").val("")
-     e.preventDefault()
-
-  $("abbr.timeago").livequery ->
-    $(this).timeago()

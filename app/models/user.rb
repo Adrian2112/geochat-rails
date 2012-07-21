@@ -12,7 +12,7 @@ class User
 
   many :messages
   
-  PUBLIC = [:name, :gender, :photo]
+  PUBLIC = [:name, :gender, :photo, :_id]
 
   def to_s
     self.name

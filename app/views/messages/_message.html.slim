@@ -1,9 +1,0 @@
-.message
-  - if message.user.mayorships.include? message.place_id
-    img.mayor(src="http://foursquare.com/img/icon-crown-rotated.png")
-  - else
-    span.mayor-placeholder
-  img.photo(src='#{message.user.photo}')
-  span.author #{message.user}:
-  span.text #{message.text}
-  abbr.timeago(title="#{message.created_at.iso8601}") #{l message.created_at, format: :long}
