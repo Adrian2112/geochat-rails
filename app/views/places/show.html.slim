@@ -1,4 +1,7 @@
 h3 #{@name}
+
+span(data-place="true" data-place-id="#{params[:id]}")
+
 div#messages
   - @messages.each do |message|
     = render message
