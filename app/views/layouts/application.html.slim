@@ -5,7 +5,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'http://wilbur.io.s3.amazonaws.com/all.css'
     = javascript_include_tag 'application'
-    = javascript_include_tag FAYE_SERVER+".js"
+    = javascript_include_tag SOCKETIO_SERVER+"socket.io/socket.io.js"
     = csrf_meta_tags
   
   body

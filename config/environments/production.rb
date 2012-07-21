@@ -1,7 +1,7 @@
 GeochatRails::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  FAYE_SERVER = "http://geochat-faye.herokuapp.com/faye"
+  SOCKETIO_SERVER = "http://geochat-socketio.herokuapp.com/faye"
   FOURSQUARE_CLIENT_ID = "clientId"
   FOURSQUARE_CLIENT_SECRET = "clientSecret"
   # Code is not reloaded between requests
