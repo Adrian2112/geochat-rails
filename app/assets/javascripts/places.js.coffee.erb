@@ -20,12 +20,11 @@ jQuery ->
   scroll_to_bottom()
 
   $("#new_message input.text").focus()
-  message.user = user
   
   $("abbr.timeago").livequery ->
     $(this).timeago()
 
-  place_id = $("[data-place=true]")?.data("place")
+  place_id = $("[data-place=true]")?.data("place-id")
   user = $("[data-user]").data("user")
 
   $("form#new_message").submit (e) ->
@@ -33,7 +32,7 @@ jQuery ->
     socket.emit("new message", message)
     $(this).children(".text").val("")
 
-    message.created_at = created_at: (new Date).toISOString()
+    message.created_at = (new Date).toISOString()
     message.user = user
     append_message message
     e.preventDefault()
@@ -47,4 +46,5 @@ jQuery ->
 
     socket.on "new message", (message) ->
       append_message message
+      console.log message
 
