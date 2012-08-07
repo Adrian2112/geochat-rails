@@ -12,6 +12,7 @@ gem "json"
 gem "typhoeus"
 gem "quimby"
 gem 'slim'
+gem 'thin'
 
 gem 'mustache'
 gem 'poirot', '0.0.3'
