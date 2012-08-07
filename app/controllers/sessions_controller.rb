@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  skip_before_filter :authenticate!
+
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     user.update_info(env["omniauth.auth"])

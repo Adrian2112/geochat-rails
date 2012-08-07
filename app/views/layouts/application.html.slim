@@ -20,5 +20,10 @@ html
             span.username= current_user
             span(data-user="#{current_user.public_attributes.to_json}")
             = link_to 'Logout', logout_path
+
+      #flash
+        - flash.each do |k,v|
+          div(class="#{k}")
+            = v
       
       = yield
