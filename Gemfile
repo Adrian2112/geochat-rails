@@ -14,8 +14,7 @@ gem "quimby"
 gem 'slim'
 gem 'thin'
 
-gem 'mustache'
-gem 'poirot', '0.0.3'
+gem 'eco'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

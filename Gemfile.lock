@@ -50,6 +50,11 @@ GEM
       debugger-ruby_core_source (>= 1.1.1)
     debugger-ruby_core_source (1.1.3)
     diff-lcs (1.1.3)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
     erubis (2.7.0)
     eventmachine (0.12.10)
     execjs (1.4.0)
@@ -81,7 +86,6 @@ GEM
       plucky (~> 0.4.0)
     multi_json (1.3.6)
     multipart-post (1.1.5)
-    mustache (0.99.4)
     oauth2 (0.8.0)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -99,9 +103,6 @@ GEM
       omniauth (~> 1.0)
     plucky (0.4.4)
       mongo (~> 1.5)
-    poirot (0.0.3)
-      mustache
-      rails (> 3)
     polyglot (0.3.3)
     quimby (0.4.5)
       json
@@ -175,12 +176,11 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   debugger
+  eco
   jquery-rails
   json
   mongo_mapper
-  mustache
   omniauth-foursquare
-  poirot (= 0.0.3)
   quimby
   rails (= 3.2.1)
   rspec

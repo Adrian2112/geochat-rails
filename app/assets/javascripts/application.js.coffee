@@ -13,7 +13,6 @@
 ##= require jquery
 ##= require jquery_ujs
 ##= require vendor
-##= require poirot
 ##= require_tree .
 
 window.geochat = {}

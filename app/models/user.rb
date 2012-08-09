@@ -12,7 +12,7 @@ class User
 
   many :messages
   
-  PUBLIC = [:name, :gender, :photo, :_id]
+  PUBLIC_ATTRIBUTES = [:name, :gender, :photo, :_id, :mayorships]
 
   def to_s
     self.name
@@ -48,7 +48,7 @@ class User
   end
 
   def public_attributes
-    self.attributes.reject {|k, v| !PUBLIC.include? k.to_sym}
+    self.attributes.reject {|k, v| !PUBLIC_ATTRIBUTES.include? k.to_sym}
   end
 
 end

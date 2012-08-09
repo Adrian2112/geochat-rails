@@ -10,9 +10,9 @@ announce_user = (user) ->
   $("#messages").append(html(user))
   scroll_to_bottom()
 
-append_message = (message) ->
-  html = Handlebars.compile($("#messages-message-template").html())
-  $("#messages").append(html({message: message}))
+append_message = (messages) ->
+  html = JST["Templates/messages/message"](messages)
+  $("#messages").append(html)
   scroll_to_bottom()
 
 
@@ -22,6 +22,7 @@ jQuery ->
   $("#new_message input.text").focus()
   
   $("abbr.timeago").livequery ->
+    $(this).html moment($(this).attr("title")).format("LLL")
     $(this).timeago()
 
   place_id = $("[data-place=true]")?.data("place-id")
@@ -34,12 +35,16 @@ jQuery ->
 
     message.created_at = (new Date).toISOString()
     message.user = user
-    append_message message
+    append_message { messages: [message] }
     e.preventDefault()
 
   if place_id
     socket = io.connect('<%= SOCKETIO_SERVER %>')
     socket.emit("join room", {room: place_id, user: user} )
+
+    $.get "/places/#{place_id}.json", (data) ->
+      $("#messages").html("")
+      append_message(data)
 
     socket.on "new user", (user) ->
       announce_user user

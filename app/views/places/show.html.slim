@@ -3,14 +3,10 @@ h3 #{@name}
 span(data-place="true" data-place-id="#{params[:id]}")
 
 div#messages
-  - @messages.each do |message|
-    = render message
+  = image_tag "spinner.gif", class: "loading"
 
 = form_for Message.new, {url: '#'} do |f| 
   =f.text_field :text, class: :text
-
-
-= template_include_tag '/messages/message'
 
 script#new_user_tmpl(type="text/x-handlebars-template")
   .new_user
