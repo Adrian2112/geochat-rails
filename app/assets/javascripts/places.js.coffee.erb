@@ -29,14 +29,16 @@ jQuery ->
   user = $("[data-user]").data("user")
 
   $("form#new_message").submit (e) ->
-    message = { text: $("#new_message input.text").val() }
-    socket.emit("new message", message)
-    $(this).children(".text").val("")
-
-    message.created_at = (new Date).toISOString()
-    message.user = user
-    append_message { messages: [message] }
     e.preventDefault()
+    message = { text: $("#new_message input.text").val() }
+    # si el mensaje no esta vacio
+    if message.text != ""
+      socket.emit("new message", message)
+      $(this).children(".text").val("")
+
+      message.created_at = (new Date).toISOString()
+      message.user = user
+      append_message { messages: [message] }
 
   if place_id
     socket = io.connect('<%= SOCKETIO_SERVER %>')

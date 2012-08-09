@@ -4,7 +4,8 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @messages = Message.where(place_id: params[:id])
+    @messages = Message.where(place_id: params[:id]).sort({created_at: -1}).limit(50).all
+    @messages.reverse!
     respond_to do |format|
       format.json { render json: { messages: @messages } }
       format.html {
