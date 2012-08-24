@@ -13,6 +13,7 @@ gem "typhoeus"
 gem "quimby"
 gem 'slim'
 gem 'thin'
+gem 'rack-jsonp-middleware', require: 'rack/jsonp'
 
 gem 'eco'
 # Gems used only for assets and not required

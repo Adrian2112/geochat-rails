@@ -110,6 +110,8 @@ GEM
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-jsonp-middleware (0.0.6)
+      rack
     rack-ssl (1.3.2)
       rack
     rack-test (0.6.1)
@@ -182,6 +184,7 @@ DEPENDENCIES
   mongo_mapper
   omniauth-foursquare
   quimby
+  rack-jsonp-middleware
   rails (= 3.2.1)
   rspec
   slim

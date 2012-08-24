@@ -68,6 +68,8 @@ module GeochatRails
       g.orm :mongo_mapper    # :active_record
     end
 
+    config.middleware.use Rack::JSONP
+
     Stylus.use(:nib) if defined?(Stylus)
   end
 end
